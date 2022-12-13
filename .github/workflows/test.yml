@@ -1,13 +1,18 @@
-name: Example
+name: Github Actions Example
 
 on:
-   push:
+  pull_request:
+  push:
+    branches: 
+      - master
+      - develop
 
 jobs:
   test:
-        name: testing
-	runs-on: ubuntu-latest
-        steps: 
-  	 -uses: actions/checkout@v3
-         -name: Create Pull Request
-          uses:peter-evans/create-pull-request@v4
+    name: Running Units Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
