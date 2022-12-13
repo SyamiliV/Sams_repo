@@ -1,22 +1,20 @@
-name: Github Actions Example hm
-
+name: Cloud - Create PR to update available list
 on:
-  pull_request:
-  push:
-    branches: 
-      - master
-
+  schedule:
+    - cron: "0 6 * * 2"
 jobs:
-  test:
-    name: Running Units Tests
+  CloudList:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout the repo
-      uses: actions/checkout@v3
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
-      with:
-        branch: sass
-        delete-branch: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Cloud - Update available list
+          title: Cloud - Update available list
+          body: Cloud - Update available list
+          base: main
+          labels: automated-pr, Clouds & Regions
+          branch: cloud-update-advanced-params
+          delete-branch: true
