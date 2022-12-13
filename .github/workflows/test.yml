@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Create Pull Request
+      id: cpr
       uses: peter-evans/create-pull-request@v4
+      env:
+ 	https_proxy: http://proxy.houston.hpecorp.net:8080
+        http_proxy: http://proxy.houston.hpecorp.net:8080
