@@ -17,7 +17,3 @@ jobs:
     - name: Create Pull Request
       id: cpr
       uses: peter-evans/create-pull-request@v4
-      with:
-         add-paths: |
-		*.ext1
-		*.ext2
